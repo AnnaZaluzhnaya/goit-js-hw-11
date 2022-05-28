@@ -1,27 +1,60 @@
-.example {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
-  background-color: #fff;
-  color: #424242;
-  max-width: 960px;
-  padding: 16px;
+.search-form{
+  margin-top: 30px;
+  
 }
 
-.example code {
-  font-family: monospace;
-  font-size: 16px;
-  font-weight: 700;
-  background-color: #009688;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 2px;
+.search-input{
+  margin-bottom: 20px;
 }
 
-.example .background {
-  height: 240px;
-  // Путь к изображениям из SASS-файла всегда такой, как из папки css
-  background-image: url('../images/demo.jpg');
-  background-size: cover;
-  background-position: center;
+body{
+  text-align: center;
+  height: 600px;
+  background: linear-gradient(to bottom left, #33ccff 0%, #ff99cc 100%);
 }
+
+.button{
+  color: white;
+  background-image: linear-gradient(to bottom left, #33ccff 0%, #ff99cc 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+  border-color: #33ccff;
+}
+
+.button:hover {
+  background-position: right center;
+}
+
+.search-input{
+  border-color: #33ccff;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: -10px;
+}
+
+.photo-card {
+  width: calc((100% - 80px)/4);
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom left, #33ccff 0%, #ff99cc 100%);
+}
+
+  img{
+    width: 100%;
+    height: 200px;
+  }
+
+.info-item {
+  text-shadow: 2px 2px 5px #ff99cc;
+  margin: 5px;
+}
+
