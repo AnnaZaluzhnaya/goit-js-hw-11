@@ -17,6 +17,16 @@ export default class NewsApiService {
             });
     }
 
+    
+    // async function fetchPhoto() {
+    //     const axios = require('axios');
+    //     const key = '27631880-b0639dc61f111cbc90b791bd4';
+    //     const url = `https://pixabay.com/api/?key=${key}&q=${this.name}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.pageNumber}`;
+    //     const photos = await axios.get(url);
+    //     return photos;
+        
+    // }
+    
     incrementPageNumber() {
         this.pageNumber += 1;
     }
