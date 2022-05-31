@@ -48,9 +48,17 @@ body{
   background-image: linear-gradient(to bottom left, #33ccff 0%, #ff99cc 100%);
 }
 
+
+
+
   img{
     width: 100%;
     height: 200px;
+    transition: transform 0.25s;
+  }
+
+  img:hover{
+      transform: scale(2.0);
   }
 
 .info-item {
