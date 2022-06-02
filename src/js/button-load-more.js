@@ -12,17 +12,17 @@ export default class LoadMoreBtn {
     return refs;
     }
 
-    enable() {
-    this.refs.button.disabled = false;
-    this.refs.button.textContent = 'Load more';
-    this.refs.button.classList.add('is-hidden');
-    }
+    // enable() {
+    // this.refs.button.disabled = false;
+    // this.refs.button.textContent = 'Load more';
+    // this.refs.button.classList.add('is-hidden');
+    // }
 
-    disable() {
-    this.refs.button.disabled = true;
-    this.refs.button.textContent = 'Loding...';
-    this.refs.button.classList.remove('is-hidden');
-    }
+    // disable() {
+    // this.refs.button.disabled = true;
+    // this.refs.button.textContent = 'Loding...';
+    // this.refs.button.classList.remove('is-hidden');
+    // }
 
     show() {
     this.refs.button.classList.remove('is-hidden');

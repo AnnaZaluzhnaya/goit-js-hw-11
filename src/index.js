@@ -14,11 +14,11 @@ const refs = {
 }
 
 const KEY = '27631880-b0639dc61f111cbc90b791bd4';
-const URL = "https://pixabay.com/api/";
+const BASE_URL = "https://pixabay.com/api/";
 
 let page = 1;
 let searchQuery = "";
-let countImages = 0;
+let countImg = 0;
 const perPage = 40;
 
 
@@ -32,14 +32,14 @@ const loadMoreBtn = new LoadMoreBtn({
 
 async function fetchApi(searchQuery, page){
     try{
-        const response = await axios.get(`${URL}?key=${KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`);
-        const images = response.data;
-        if(images.hits.length===0){
+        const response = await axios.get(`${BASE_URL}?key=${KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`);
+        const img = response.data;
+        if(img.hits.length===0){
             throw new Error();
         } 
-      
-        return images;
-         } catch (error) {
+        
+        return img;
+        } catch (error) {
         console.log(error);
     }
 }
@@ -62,16 +62,16 @@ refs.form.addEventListener("submit", event=>{
     resetPage();
     resetGallery();
         fetchApi(searchQuery, page)
-        .then(images => {
-    Notiflix.Notify.success(`Hooray! We found ${images.totalHits} images.`);
-    countImages+=images.hits.length;
-    gallaryAdd (images.hits);
+        .then(img => {
+    Notiflix.Notify.success(`Hooray! We found ${img.totalHits} images.`);
+    countImg+=img.hits.length;
+    addGallery  (img.hits);
             lightbox.refresh();
-            if (countImages === images.totalHits) {
+            if (countImg === img.totalHits) {
                 Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
                 loadMoreBtn.hide();
             }
-            else if (images.hits.length < 40){
+            else if (img.hits.length < 40){
                 loadMoreBtn.hide();
         }   
             else { 
@@ -91,17 +91,16 @@ refs.buttonLoad.addEventListener("click", event=>{
     event.preventDefault();
     incrementPage();
     
-    
     fetchApi(searchQuery, page) 
-    .then(images=>{ 
-        countImages += images.hits.length;
-    gallaryAdd (images.hits);
+    .then(img=>{ 
+        countImg += img.hits.length;
+    addGallery  (img.hits);
         lightbox.refresh();
-    if(countImages === images.totalHits){
-        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+    if(countImg === img.totalHits){
         loadMoreBtn.hide();
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
     }
-        else if (images.hits.length < 40){
+        else if (img.hits.length < 40){
         loadMoreBtn.hide();
     }
         
@@ -116,8 +115,8 @@ refs.buttonLoad.addEventListener("click", event=>{
     }) 
 });
 
-function gallaryAdd (photos){
-    refs.gallery.insertAdjacentHTML("beforeend", photosTemplates(photos));
+function addGallery (img){
+    refs.gallery.insertAdjacentHTML("beforeend", photosTemplates(img));
     
 }
 
