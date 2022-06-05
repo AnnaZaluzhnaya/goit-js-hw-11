@@ -55,10 +55,12 @@ body{
     width: 100%;
     height: 200px;
     transition: transform 0.25s;
+    object-fit: cover;
   }
 
   img:hover{
       transform: scale(2.0);
+      
   }
 
 .info-item {

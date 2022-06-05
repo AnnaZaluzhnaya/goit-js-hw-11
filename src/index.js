@@ -34,6 +34,13 @@ async function fetchApi(searchQuery, page){
     try{
         const response = await axios.get(`${BASE_URL}?key=${KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${perPage}`);
         const img = response.data;
+        let lastPage = Math.ceil(response.data.totalHits / 40);
+        if (page === lastPage) {
+            refs.buttonLoad.style.display = "none";
+            Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+            
+        }
+
         if(img.hits.length === 0){
             throw new Error();
         } 
@@ -60,7 +67,7 @@ refs.form.addEventListener('submit', event => {
     event.preventDefault();
 
         searchQuery = event.currentTarget.elements.searchQuery.value.trim();
-
+        
         if (!searchQuery) return Notiflix.Notify.failure('Enter a query');
     resetPage();
     resetGallery();
