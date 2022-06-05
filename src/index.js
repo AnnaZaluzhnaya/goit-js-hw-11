@@ -59,8 +59,9 @@ function resetGallery(){
 refs.form.addEventListener('submit', event => {
     event.preventDefault();
 
-    searchQuery = event.currentTarget.elements.searchQuery.value;
+        searchQuery = event.currentTarget.elements.searchQuery.value.trim();
 
+        if (!searchQuery) return Notiflix.Notify.failure('Enter a query');
     resetPage();
     resetGallery();
 
@@ -71,7 +72,7 @@ refs.form.addEventListener('submit', event => {
         addGallery(img.hits);
             lightbox.refresh();
             
-        if (img.hits.length < 40) {
+        if (img.hits.length < 40 ) {
             Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
             loadMoreBtn.hide();
         } else {
